@@ -242,7 +242,7 @@ return [
             'label_color' => 'success',
         ],
         [
-            'text'        => 'Buku',
+            'text'        => 'Barang',
             'url'         => 'admin/books',
             'icon'        => 'fas fa-fw fa-book',
             'can'         => 'isAdmin',

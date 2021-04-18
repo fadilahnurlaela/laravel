@@ -25,17 +25,18 @@ class AdminController extends Controller
     {
         $book = new Book;
 
-        $book->judul = $req->get('judul');
-        $book->penulis = $req->get('penulis');
-        $book->tahun = $req->get('tahun');
-        $book->penerbit = $req->get('penerbit');
+        $book->nama = $req->get('nama');
+        $book->kategori = $req->get('kategori');
+        $book->merek = $req->get('merek');
+        $book->harga = $req->get('harga');
+        $book->stok = $req->get('stok');
 
         if ($req->hasFile('cover')) {
             $extension = $req->file('cover')->extension();
 
-            $filename = 'cover_buku' . time() . '.' . $extension;
+            $filename = 'cover_barang_' . time() . '.' . $extension;
             $req->file('cover')->storeAs(
-                'public/cover_buku',
+                'public/cover_barang',
                 $filename
             );
 
@@ -44,21 +45,22 @@ class AdminController extends Controller
         $book->save();
 
         $notification = array(
-            'message' => 'Data buku berhasil ditambahkan',
+            'message' => 'Data barang berhasil ditambahkan',
             'alert-type' => 'success'
         );
 
         return redirect()->route('admin.books')->with($notification);
     }
 
-public function update_book(Request $req)
+    public function update_book(Request $req)
     {
         $book = Book::find($req->get('id'));
 
-        $book->judul = $req->get('judul');
-        $book->penulis = $req->get('penulis');
-        $book->tahun = $req->get('tahun');
-        $book->penerbit = $req->get('penerbit');
+        $book->nama = $req->get('nama');
+        $book->kategori = $req->get('kategori');
+        $book->merek = $req->get('merek');
+        $book->harga = $req->get('harga');
+        $book->stok = $req->get('stok');
 
         if ($req->hasFile('cover')) {
             $extension = $req->file('cover')->extension();
@@ -68,7 +70,7 @@ public function update_book(Request $req)
                 'public/cover_buku',
                 $filename
             );
-            Storage::delete('public/cover_buku/'.$req->get('old_cover'));
+            Storage::delete('public/cover_buku/' . $req->get('old_cover'));
 
             $book->cover = $filename;
         }
@@ -86,7 +88,7 @@ public function update_book(Request $req)
     {
         $book = Book::find($req->get('id'));
 
-        storage::delete('public/cover_buku/'.$req->get('old_cover'));
+        storage::delete('public/cover_buku/' . $req->get('old_cover'));
 
         $book->delete();
 

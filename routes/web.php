@@ -34,11 +34,13 @@ Route::get('admin/books', [BookController::class, 'index'])
 Route::post('admin/books', [BookController::class, 'store'])
     ->name('admin.book.submit')
     ->middleware('is_admin');
+
 Route::patch('admin/books/update', [BookController::class, 'update'])
     ->name('admin.book.update')
     ->middleware('is_admin');
 
 Route::get('admin/ajaxadmin/dataBuku/{id}', [BookController::class, 'getDataBuku']);
+
 Route::delete('admin/books/delete', [BookController::class, 'destroy'])
     ->name('admin.book.delete')
     ->middleware('is_admin');
