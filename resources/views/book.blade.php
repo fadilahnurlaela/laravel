@@ -3,7 +3,7 @@
 @section('title', 'Pengelolaan Barang')
 
 @section('content_header')
-<h1>Pengelolaan Barang</h1>
+<h1>MANAGEMENT OF VANS SHOES</h1>
 @stop
 
 @section('content')
@@ -12,7 +12,7 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    {{ __('Pengelolaan Barang') }}
+                    {{ __('vans shoes') }}
                     <button class="btn btn-primary float-right" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
                     <button class="btn btn-secondary float-right" data-toggle="modal"><a href="{{ route('admin.print.books') }}" target="_blank"><i class="fa fa-print"></i> Cetak PDF</a></button>
                 </div>
@@ -104,7 +104,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Kirim</button>
+                <button type="submit" class="btn btn-primary">simpan</button>
                 </form>
             </div>
         </div>
@@ -115,7 +115,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Data Barang</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data Sepatu</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -171,7 +171,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Hapus Data Barang</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Hapus Data Sepatu</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -188,12 +188,12 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                 <button type="submit" class="btn btn-danger">Hapus</button>
             </div>
-            <div class="card-body">
-                <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button> -->
-                <!-- <a href="{{ route('admin.print.books') }}" target="_blank" class="btn btn-danger"></i> Cetak PDF</a> -->
-                <hr />
-                </form>
-            </div>
+            <!-- <div class="card-body"> -->
+            <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
+                <a href="{{ route('admin.print.books') }}" target="_blank" class="btn btn-danger"></i> Cetak PDF</a> -->
+            <!-- <hr /> -->
+            </form>
+            <!-- </div> -->
         </div>
     </div>
 </div>

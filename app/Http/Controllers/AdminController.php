@@ -34,9 +34,9 @@ class AdminController extends Controller
         if ($req->hasFile('cover')) {
             $extension = $req->file('cover')->extension();
 
-            $filename = 'cover_barang_' . time() . '.' . $extension;
+            $filename = 'cover_buku_' . time() . '.' . $extension;
             $req->file('cover')->storeAs(
-                'public/cover_barang',
+                'public/cover_buku',
                 $filename
             );
 
@@ -45,7 +45,7 @@ class AdminController extends Controller
         $book->save();
 
         $notification = array(
-            'message' => 'Data barang berhasil ditambahkan',
+            'message' => 'Data sepatu berhasil ditambahkan',
             'alert-type' => 'success'
         );
 
@@ -77,7 +77,7 @@ class AdminController extends Controller
         $book->save();
 
         $notification = array(
-            'message' => 'Data buku berhasil diubah',
+            'message' => 'Data sepatu berhasil diubah',
             'alert-type' => 'success'
         );
 
@@ -93,7 +93,7 @@ class AdminController extends Controller
         $book->delete();
 
         $notification = array(
-            'message' => 'Data Buku Berhasil Dihapus',
+            'message' => 'Data sepatu Berhasil Dihapus',
             'alert-type' => 'succes'
         );
 
