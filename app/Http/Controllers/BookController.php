@@ -3,17 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Calculation\Category;
 
 class BookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $user = Auth::user();
@@ -21,38 +19,31 @@ class BookController extends Controller
         return view('book', compact('user', 'books'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $req)
     {
-        $book = new Book;
+        $book = new Book();
 
-        $book->judul = $req->get('judul');
-        $book->penulis = $req->get('penulis');
-        $book->tahun = $req->get('tahun');
-        $book->penerbit = $req->get('penerbit');
+        $book->nama = $req->get('nama');
+        $book->categories = $req->get('categories');
+        $book->brands = $req->get('brands');
+        $book->stok = $req->get('stok');
+        $book->harga = $req->get('harga');
+
 
         if ($req->hasFile('cover')) {
             $extension = $req->file('cover')->extension();
 
-            $filename = 'cover_buku_' . time() . '.' . $extension;
+            $filename = 'cover_book_' . time() . '.' . $extension;
 
             $req->file('cover')->storeAs(
-                'public/cover_buku',
+                'public/cover_book',
                 $filename
             );
 
@@ -62,30 +53,53 @@ class BookController extends Controller
         $book->save();
 
         $notification = array(
-            'message' => 'Data sepatu berhasil ditambahkan',
+            'message' => 'Data Sepatu berhasil ditambahkan',
             'alert-type' => 'success'
         );
 
         return redirect()->route('admin.books')->with($notification);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
+    public function submit_book(Request $req)
+    {
+        $book = new Book;
+
+        $book->nama = $req->get('nama');
+        $book->kategori = $req->get('kategori');
+        $book->merek = $req->get('merek');
+        $book->harga = $req->get('harga');
+        $book->stok = $req->get('stok');
+        $book->categories = $req->get('categories');
+        $book->brands = $req->get('brands');
+
+        if ($req->hasFile('cover')) {
+            $extension = $req->file('cover')->extension();
+
+            $filename = 'cover_book' . time() . '.' . $extension;
+            $req->file('cover')->storeAs(
+                'public/cover_book',
+                $filename
+            );
+
+            $book->cover = $filename;
+        }
+        $book->save();
+
+        $notification = array(
+            'message' => 'Data Sepatu berhasil ditambahkan',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.books')->with($notification);
+    }
+
+
     public function show(Book $book)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Book $book)
     {
         //
@@ -98,26 +112,29 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $req)
     {
         $book = Book::find($req->get('id'));
 
-        $book->judul = $req->get('judul');
-        $book->penulis = $req->get('penulis');
-        $book->tahun = $req->get('tahun');
-        $book->penerbit = $req->get('penerbit');
+        $book->nama = $req->get('nama');
+        $book->categories = $req->get('categories');
+        $book->brands = $req->get('brands');
+        $book->stok = $req->get('stok');
+        $book->harga = $req->get('harga');
+
 
         if ($req->hasFile('cover')) {
             $extension = $req->file('cover')->extension();
 
-            $filename = 'cover_buku_' . time() . '.' . $extension;
+            $filename = 'cover_book_' . time() . '.' . $extension;
 
             $req->file('cover')->storeAs(
-                'public/cover_buku',
+                'public/cover_book',
                 $filename
             );
 
-            Storage::delete('public/cover_buku/' . $req->get('old_cover'));
+            Storage::delete('public/cover_book/' . $req->get('old_cover'));
 
             $book->cover = $filename;
         }
@@ -125,7 +142,7 @@ class BookController extends Controller
         $book->save();
 
         $notification = array(
-            'message' => 'Data sepatu berhasil diubah',
+            'message' => 'Data Sepatu berhasil diubah',
             'alert-type' => 'success'
         );
 
@@ -135,24 +152,40 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\Drug  $book
      * @return \Illuminate\Http\Response
      */
-    public function getDataBuku($id)
+    public function getDataBook($id)
     {
-        $buku = Book::find($id);
+        $book = Book::find($id);
 
-        return response()->json($buku);
+        return response()->json($book);
     }
     public function destroy(Request $req)
     {
         $book = Book::find($req->id);
-        Storage::delete('public/cover_buku/' . $req->get('old_cover'));
+        Storage::delete('public/cover_book/' . $req->get('old_cover'));
         $book->delete();
 
         $notification = array(
-            'message' => 'Data sepatu berhasil dihapus',
+            'message' => 'Data Sepatu berhasil dihapus',
             'alert-type' => 'success'
+        );
+
+        return redirect()->route('admin.books')->with($notification);
+    }
+
+    public function delete_book(Request $req)
+    {
+        $book = Book::find($req->get('id'));
+
+        storage::delete('public/cover_book/' . $req->get('old_cover'));
+
+        $book->delete();
+
+        $notification = array(
+            'message' => 'Data Sepatu Berhasil Dihapus',
+            'alert-type' => 'succes'
         );
 
         return redirect()->route('admin.books')->with($notification);

@@ -21,89 +21,89 @@ class AdminController extends Controller
         return view('home', compact('user'));
     }
 
-    public function submit_book(Request $req)
-    {
-        $book = new Book;
+    // public function submit_book(Request $req)
+    // {
+    //     $book = new Book;
 
-        $book->nama = $req->get('nama');
-        $book->kategori = $req->get('kategori');
-        $book->merek = $req->get('merek');
-        $book->harga = $req->get('harga');
-        $book->stok = $req->get('stok');
+    //     $book->nama = $req->get('nama');
+    //     $book->kategori = $req->get('kategori');
+    //     $book->merek = $req->get('merek');
+    //     $book->harga = $req->get('harga');
+    //     $book->stok = $req->get('stok');
 
-        if ($req->hasFile('cover')) {
-            $extension = $req->file('cover')->extension();
+    //     if ($req->hasFile('cover')) {
+    //         $extension = $req->file('cover')->extension();
 
-            $filename = 'cover_buku_' . time() . '.' . $extension;
-            $req->file('cover')->storeAs(
-                'public/cover_buku',
-                $filename
-            );
+    //         $filename = 'cover_buku_' . time() . '.' . $extension;
+    //         $req->file('cover')->storeAs(
+    //             'public/cover_buku',
+    //             $filename
+    //         );
 
-            $book->cover = $filename;
-        }
-        $book->save();
+    //         $book->cover = $filename;
+    //     }
+    //     $book->save();
 
-        $notification = array(
-            'message' => 'Data sepatu berhasil ditambahkan',
-            'alert-type' => 'success'
-        );
+    //     $notification = array(
+    //         'message' => 'Data sepatu berhasil ditambahkan',
+    //         'alert-type' => 'success'
+    //     );
 
-        return redirect()->route('admin.books')->with($notification);
-    }
+    //     return redirect()->route('admin.books')->with($notification);
+    // }
 
-    public function update_book(Request $req)
-    {
-        $book = Book::find($req->get('id'));
+    // public function update_book(Request $req)
+    // {
+    //     $book = Book::find($req->get('id'));
 
-        $book->nama = $req->get('nama');
-        $book->kategori = $req->get('kategori');
-        $book->merek = $req->get('merek');
-        $book->harga = $req->get('harga');
-        $book->stok = $req->get('stok');
+    //     $book->nama = $req->get('nama');
+    //     $book->kategori = $req->get('kategori');
+    //     $book->merek = $req->get('merek');
+    //     $book->harga = $req->get('harga');
+    //     $book->stok = $req->get('stok');
 
-        if ($req->hasFile('cover')) {
-            $extension = $req->file('cover')->extension();
+    //     if ($req->hasFile('cover')) {
+    //         $extension = $req->file('cover')->extension();
 
-            $filename = 'cover_buku' . time() . '.' . $extension;
-            $req->file('cover')->storeAs(
-                'public/cover_buku',
-                $filename
-            );
-            Storage::delete('public/cover_buku/' . $req->get('old_cover'));
+    //         $filename = 'cover_buku' . time() . '.' . $extension;
+    //         $req->file('cover')->storeAs(
+    //             'public/cover_buku',
+    //             $filename
+    //         );
+    //         Storage::delete('public/cover_buku/' . $req->get('old_cover'));
 
-            $book->cover = $filename;
-        }
-        $book->save();
+    //         $book->cover = $filename;
+    //     }
+    //     $book->save();
 
-        $notification = array(
-            'message' => 'Data sepatu berhasil diubah',
-            'alert-type' => 'success'
-        );
+    //     $notification = array(
+    //         'message' => 'Data sepatu berhasil diubah',
+    //         'alert-type' => 'success'
+    //     );
 
-        return redirect()->route('admin.books')->with($notification);
-    }
+    //     return redirect()->route('admin.books')->with($notification);
+    // }
 
-    public function delete_book(Request $req)
-    {
-        $book = Book::find($req->get('id'));
+    // public function delete_book(Request $req)
+    // {
+    //     $book = Book::find($req->get('id'));
 
-        storage::delete('public/cover_buku/' . $req->get('old_cover'));
+    //     storage::delete('public/cover_buku/' . $req->get('old_cover'));
 
-        $book->delete();
+    //     $book->delete();
 
-        $notification = array(
-            'message' => 'Data sepatu Berhasil Dihapus',
-            'alert-type' => 'succes'
-        );
+    //     $notification = array(
+    //         'message' => 'Data sepatu Berhasil Dihapus',
+    //         'alert-type' => 'succes'
+    //     );
 
-        return redirect()->route('admin.books')->with($notification);
-    }
-    public function print_books()
-    {
-        $books = Book::all();
+    //     return redirect()->route('admin.books')->with($notification);
+    // }
+    // public function print_books()
+    // {
+    //     $books = Book::all();
 
-        $pdf = PDF::loadview('print_books', ['books' => $books]);
-        return $pdf->download('data_buku.pdf');
-    }
+    //     $pdf = PDF::loadview('print_books', ['books' => $books]);
+    //     return $pdf->download('data_buku.pdf');
+    // }
 }

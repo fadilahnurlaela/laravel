@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-// use App\Http\Controllers\BookController;
-use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\BrandsController;
+use Illuminate\Support\Facades\Auth;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,64 +32,70 @@ Route::get('admin/home', [AdminController::class, 'index'])
     ->name('admin.home')
     ->middleware('is_admin');
 
-// Route::get('admin/books', [BookController::class, 'index'])
-//     ->name('admin.books')
-//     ->middleware('is_admin');
-
-// Route::post('admin/books', [BookController::class, 'store'])
-//     ->name('admin.book.submit')
-//     ->middleware('is_admin');
-
-// Route::patch('admin/books/update', [BookController::class, 'update'])
-//     ->name('admin.book.update')
-//     ->middleware('is_admin');
-
-// Route::get('admin/ajaxadmin/dataBuku/{id}', [BookController::class, 'getDataBuku']);
-
-// Route::delete('admin/books/delete', [BookController::class, 'destroy'])
-//     ->name('admin.book.delete')
-//     ->middleware('is_admin');
-
-// //PENGELOLAAN BUKU
-// Route::post('admin/books', [AdminController::class, 'submit_book'])
-//     ->name('admin.book.submit')
-//     ->middleware('is_admin');
-
-// //UPDATE BOOK
-// Route::patch('admin/books/update', [AdminController::class, 'update_book'])
-//     ->name('admin.book.update')
-//     ->middleware('is_admin');
-
-// Route::get('admin/print_books', [AdminController::class, 'print_books'])
-//     ->name('admin.print.books')
-//     ->middleware('is_admin');
-// CATEGORIES
-Route::get('admin/categories', [CategorieController::class, 'index'])
-    ->name('admin.categories')
+Route::get('admin/books', [BookController::class, 'index'])
+    ->name('admin.books')
     ->middleware('is_admin');
 
-Route::post('admin/categories', [CategorieController::class, 'store'])
-    ->name('admin.categories.submit')
+Route::post('admin/books', [BookController::class, 'store'])
+    ->name('admin.book.submit')
     ->middleware('is_admin');
+
 //PENGELOLAAN BUKU
-Route::post('admin/categories', [AdminController::class, 'submit_categorie'])
-    ->name('admin.categories.submit')
+Route::post('admin/books', [BookController::class, 'submit_book'])
+    ->name('admin.book.submit')
     ->middleware('is_admin');
 
 //UPDATE BOOK
-Route::patch('admin/categories/update', [CategorieController::class, 'update'])
-    ->name('admin.categories.update')
+Route::patch('admin/books/update', [BookController::class, 'update'])
+    ->name('admin.book.update')
     ->middleware('is_admin');
 
-Route::patch('admin/categories/update', [AdminController::class, 'update_categorie'])
-    ->name('admin.categories.update')
+Route::get('admin/ajaxadmin/dataBook/{id}', [BookController::class, 'getDataBook']);
+
+Route::delete('admin/books/delete', [BookController::class, 'destroy'])
+    ->name('admin.book.delete')
     ->middleware('is_admin');
 
-Route::get('admin/ajaxadmin/dataCategorie/{id}', [CategorieController::class, 'getDataCategorie']);
-
-Route::delete('admin/categories/delete', [CategorieController::class, 'destroy'])
-    ->name('admin.categories.delete')
+Route::get('admin/print_books', [AdminController::class, 'print_books'])
+    ->name('admin.print.books')
     ->middleware('is_admin');
-// Route::get('admin/print_drugs', [AdminController::class, 'print_drugs'])
-//     ->name('admin.print.drugs')
-//     ->middleware('is_admin');
+
+//BRANDS
+Route::get('admin/merek', [App\Http\Controllers\BrandsController::class, 'index'])
+    ->name('admin.merek')
+    ->middleware('is_admin');
+
+//route tambah 
+Route::post('admin/merek', [BrandsController::class, 'tambah_brand'])
+    ->name('admin.brand.submit')
+    ->middleware('is_admin');
+
+//route edit
+Route::patch('admin/merek/update', [BrandsController::class, 'update_brands'])
+    ->name('admin.brand.update')
+    ->middleware('is_admin');
+Route::get('admin/ajaxadmin/dataBrands/{id}', [BrandsController::class, 'getDataBrands']);
+
+//route delete
+Route::delete('admin/merek/delete', [BrandsController::class, 'delete_brands'])
+    ->name('admin.brand.delete')
+    ->middleware('is_admin');
+
+// KATEGORI
+Route::get('admin/kategori', [CategoriesController::class, 'index'])
+    ->name('admin.kategori')
+    ->middleware('is_admin');
+Route::post('admin/kategori', [CategoriesController::class, 'tambah_categories'])
+    ->name('admin.kategori.submit')
+    ->middleware('is_admin');
+
+//route edit categories
+Route::patch('admin/kategori/update', [CategoriesController::class, 'update_categories'])
+    ->name('admin.kategori.update')
+    ->middleware('is_admin');
+Route::get('admin/ajaxadmin/dataCategories/{id}', [CategoriesController::class, 'getDataCategories']);
+
+//route delete categories
+Route::delete('admin/kategori/delete', [CategoriesController::class, 'delete_categories'])
+    ->name('admin.kategori.delete')
+    ->middleware('is_admin');

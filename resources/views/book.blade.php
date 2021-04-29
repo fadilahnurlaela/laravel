@@ -13,10 +13,14 @@
             <div class="card">
                 <div class="card-header">
                     {{ __('vans shoes') }}
-                    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
-                    <button class="btn btn-secondary float-right" data-toggle="modal"><a href="{{ route('admin.print.books') }}" target="_blank"><i class="fa fa-print"></i> Cetak PDF</a></button>
+                    <!-- <button class="btn btn-primary float-right" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
+                    <button class="btn btn-secondary float-right" data-toggle="modal"><a href="{{ route('admin.print.books') }}" target="_blank"><i class="fa fa-print"></i> Cetak PDF</a></button> -->
                 </div>
                 <div class="card-body">
+                    <button class="btn btn-primary float-left mr-3" data-toggle="modal" data-target="#tambahBukuModal"><i class="fa fa-plus"></i> Tambah Data</button>
+
+                    <div class="btn-group mb-5" role="group" aria-label="Basis Example">
+                    </div>
                     <table id="table-data" class="table table-borderer display nowrap" style="width:100%">
                         <thead>
                             <tr>
@@ -26,6 +30,8 @@
                                 <th>MEREK</th>
                                 <th>HARGA</th>
                                 <th>STOK</th>
+                                <th>KATEGORI_ID</th>
+                                <th>BRAND_ID</th>
                                 <th>FOTO</th>
                                 <th>AKSI</th>
                             </tr>
@@ -40,6 +46,8 @@
                                 <td>{{$book->merek}}</td>
                                 <td>{{$book->harga}}</td>
                                 <td>{{$book->stok}}</td>
+                                <td>{{$book->categories}}</td>
+                                <td>{{$book->brands}}</td>
                                 <td>
                                     @if($book->cover !== null)
                                     <img src="{{ asset('storage/cover_buku/'.$book->cover) }}" width="100px" />
@@ -97,6 +105,14 @@
                         <input type="text" class="form-control" name="stok" id="stok" required />
                     </div>
                     <div class="form-group">
+                        <label for="categories">Stok</label>
+                        <input type="text" class="form-control" name="categories" id="categories" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="brands">Stok</label>
+                        <input type="text" class="form-control" name="brands" id="brands" required />
+                    </div>
+                    <div class="form-group">
                         <label for="cover">Foto</label>
                         <input type="file" class="form-control" name="cover" id="cover" />
                     </div>
@@ -146,6 +162,14 @@
                             <div class="form-group">
                                 <label for="edit-stok">stok</label>
                                 <input type="text" class="form-control" name="stok" id="edit-stok" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-categories">stok</label>
+                                <input type="text" class="form-control" name="categories" id="edit-categories" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-brands">stok</label>
+                                <input type="text" class="form-control" name="brands" id="edit-brands" required />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -230,6 +254,8 @@
                     $('#edit-merek').val(res.merek);
                     $('#edit-harga').val(res.harga);
                     $('#edit-stok').val(res.stok);
+                    $('#edit-categories').val(res.categories);
+                    $('#edit-brands').val(res.brands);
                     $('#edit-id').val(res.id);
                     $('#edit-old-cover').val(res.cover);
 

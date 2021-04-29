@@ -244,13 +244,19 @@ return [
         [
             'text'        => 'Barang',
             'url'         => 'admin/books',
-            'icon'        => 'fas fa-fw fa-book',
+            'icon'        => 'fas fa-shoe-prints',
             'can'         => 'isAdmin',
         ],
         [
-            'text'        => 'kategori',
-            'url'         => 'admin/categories',
-            'icon'        => 'fas fa-fw fa-book',
+            'text'        => 'Kategori',
+            'url'         => 'admin/kategori',
+            'icon'        => 'far fa-newspaper',
+            'can'         => 'isAdmin',
+        ],
+        [
+            'text'        => 'Brand',
+            'url'         => 'admin/merek',
+            'icon'        => 'fas fa-award',
             'can'         => 'isAdmin',
         ],
         ['header' => 'account_settings'],
