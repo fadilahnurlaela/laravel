@@ -242,10 +242,10 @@ return [
         //     'label_color' => 'success',
         // ],
         [
-            'text'        => 'Barang',
+            'text'        => 'Pengelolaan Barang',
             'url'         => 'admin/books',
             'icon'        => 'fas fa-shoe-prints',
-            'can'         => 'isAdmin',
+            'can'         => ['isUser', 'isAdmin']
         ],
         [
             'text'        => 'Kategori',
