@@ -35,26 +35,26 @@
                         </thead>
                         <tbody>
                             @php $no=1; @endphp
-                            @foreach($books as $book)
+                            @foreach($books as $books)
                             <tr>
                                 <td>{{ $no++ }}</td>
-                                <td>{{ $book->nama }}</td>
-                                <td>{{ $book->categories }}</td>
-                                <td>{{ $book->brands }}</td>
-                                <td>{{ $book->stok }}</td>
-                                <td>{{ $book->harga }}</td>
+                                <td>{{ $books->nama }}</td>
+                                <td>{{ $books->categories }}</td>
+                                <td>{{ $books->brands }}</td>
+                                <td>{{ $books->stok }}</td>
+                                <td>{{ $books->harga }}</td>
 
                                 <td>
-                                    @if($book->cover !== null)
-                                    <img src="{{asset('storage/cover_book/'.$book->cover) }}" width="100px" />
+                                    @if($books->cover !== null)
+                                    <img src="{{asset('storage/cover_book/'.$books->cover) }}" width="100px" />
                                     @else
                                     [gambar tidak tersedia]
                                     @endif
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" id="btn-edit-book" class="btn" data-toggle="modal" data-target="#editBookModal" data-id="{{ $book->id }}"><i class="fa fa-edit"></i></button>
-                                        <button type="button" id="btn-delete-book" class="btn" data-toggle="modal" data-target="#deleteBookModal" data-id="{{ $book->id }}" data-cover="{{ $book->cover }}"><i class="fa fa-trash"></i></button>
+                                        <button type="button" id="btn-edit-books" class="btn" data-toggle="modal" data-target="#editBookModal" data-id="{{ $books->id }}"><i class="fa fa-edit"></i></button>
+                                        <button type="button" id="btn-delete-books" class="btn" data-toggle="modal" data-target="#deleteBookModal" data-id="{{ $books->id }}" data-cover="{{ $books->cover }}"><i class="fa fa-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -77,18 +77,18 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('admin.book.submit') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('admin.books.submit') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control" name="nama" id="nama" required />
                     </div>
                     <div class="form-group">
-                        <label for="categories">Kategori</label>
+                        <label for="categories">Kategori Id</label>
                         <input type="text" class="form-control" name="categories" id="categories" required />
                     </div>
                     <div class="form-group">
-                        <label for="brands">Brand</label>
+                        <label for="brands">Brand Id</label>
                         <input type="text" class="form-control" name="brands" id="brands" required />
                     </div>
                     <div class="form-group">
@@ -125,7 +125,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('admin.book.update') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('admin.books.update') }}" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="row">
@@ -135,11 +135,19 @@
                                 <input type="text" class="form-control" name="nama" id="edit-nama" required />
                             </div>
                             <div class="form-group">
-                                <label for="edit-categories">Kategori</label>
+                                <label for="edit-kategori">Kategori</label>
+                                <input type="text" class="form-control" name="kategori" id="edit-kategori" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-merek">Brand</label>
+                                <input type="text" class="form-control" name="merek" id="edit-merek" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-categories">Kategori Id</label>
                                 <input type="text" class="form-control" name="categories" id="edit-categories" required />
                             </div>
                             <div class="form-group">
-                                <label for="edit-brands">Brand</label>
+                                <label for="edit-brands">Brand Id</label>
                                 <input type="text" class="form-control" name="brands" id="edit-brands" required />
                             </div>
                             <div class="form-group">
@@ -182,7 +190,7 @@
             </div>
             <div class="modal-body">
                 Apakah anda yakin akan menghapus data tersebut?
-                <form method="post" action="{{ route('admin.book.delete') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('admin.books.delete') }}" enctype="multipart/form-data">
                     @csrf
                     @method('DELETE')
             </div>
@@ -232,7 +240,7 @@
     $(function() {
 
 
-        $(document).on('click', '#btn-edit-book', function() {
+        $(document).on('click', '#btn-edit-books', function() {
             let id = $(this).data('id');
 
             $('#image-area').empty();
@@ -243,6 +251,8 @@
                 dataType: 'json',
                 success: function(res) {
                     $('#edit-nama').val(res.nama);
+                    $('#edit-kategori').val(res.kategori);
+                    $('#edit-merek').val(res.merek);
                     $('#edit-categories').val(res.categories);
                     $('#edit-brands').val(res.brands);
                     $('#edit-stok').val(res.stok);
@@ -264,7 +274,7 @@
 
     });
 
-    $(document).on('click', '#btn-delete-book', function() {
+    $(document).on('click', '#btn-delete-books', function() {
         let id = $(this).data('id');
         let cover = $(this).data('cover');
         $('#delete-id').val(id);

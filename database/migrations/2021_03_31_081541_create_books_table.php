@@ -14,16 +14,15 @@ class CreateBooksTable extends Migration
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->bigInteger('id');
+            $table->bigIncrements('id');
             $table->string('nama')->unique();
-            $table->string('kategori');
-            $table->string('merek');
-            $table->string('harga');
-            $table->string('stok');
+
             $table->bigInteger('categories')->unsigned();
             $table->bigInteger('brands')->unsigned();
             $table->foreign('categories')->references('id')->on('categories');
             $table->foreign('brands')->references('id')->on('brands');
+            $table->string('stok');
+            $table->string('harga');
             $table->string('cover')->nullable();
             $table->timestamps();
         });

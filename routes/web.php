@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\BrandsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -32,36 +33,28 @@ Route::get('admin/home', [AdminController::class, 'index'])
     ->name('admin.home')
     ->middleware('is_admin');
 
-Route::get('admin/books', [BookController::class, 'index'])
-    ->name('admin.books')
-    ->middleware('is_admin');
-
-Route::post('admin/books', [BookController::class, 'store'])
-    ->name('admin.book.submit')
-    ->middleware('is_admin');
-
 //PENGELOLAAN BUKU
 Route::get('admin/books', [BookController::class, 'index'])
     ->name('admin.books');
 // ->middleware('is_admin');
 
 Route::post('admin/books', [BookController::class, 'store'])
-    ->name('admin.book.submit');
+    ->name('admin.books.submit');
 // ->middleware('is_admin');
 
-Route::post('admin/books', [BookController::class, 'submit_book'])
-    ->name('admin.book.submit');
+Route::post('admin/books', [BookController::class, 'submit_Book'])
+    ->name('admin.books.submit');
 // ->middleware('is_admin');
 
 //UPDATE BOOK
 Route::patch('admin/books/update', [BookController::class, 'update'])
-    ->name('admin.book.update');
+    ->name('admin.books.update');
 // ->middleware('is_admin');
 
 Route::get('admin/ajaxadmin/dataBook/{id}', [BookController::class, 'getDataBook']);
 
 Route::delete('admin/books/delete', [BookController::class, 'destroy'])
-    ->name('admin.book.delete');
+    ->name('admin.books.delete');
 // ->middleware('is_admin');
 
 //BRANDS
@@ -103,3 +96,28 @@ Route::get('admin/ajaxadmin/dataCategories/{id}', [CategoriesController::class, 
 Route::delete('admin/kategori/delete', [CategoriesController::class, 'delete_categories'])
     ->name('admin.kategori.delete')
     ->middleware('is_admin');
+
+//PENGELOLAAN USER
+Route::get('admin/users', [UserController::class, 'index'])
+    ->name('admin.users');
+// ->middleware('is_admin');
+
+Route::post('admin/users', [UserController::class, 'store'])
+    ->name('admin.pengguna.submit');
+// ->middleware('is_admin');
+
+Route::post('admin/users', [UserController::class, 'submit_user'])
+    ->name('admin.pengguna.submit');
+// ->middleware('is_admin');
+
+//UPDATE USER
+Route::patch('admin/users/update', [UserController::class, 'update'])
+    ->name('admin.pengguna.update');
+// ->middleware('is_admin');
+
+Route::get('admin/ajaxadmin/dataUser/{id}', [UserController::class, 'getDataUser']);
+
+// DELETE USER
+Route::delete('admin/users/delete', [UserController::class, 'destroy'])
+    ->name('admin.pengguna.delete');
+// ->middleware('is_admin');

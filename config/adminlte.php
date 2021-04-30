@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'DL Shoes',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,8 +45,8 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>DL shoes</b>',
+    'logo_img' => 'vendor/adminlte/dist/img/LOGO2.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -242,6 +242,18 @@ return [
         //     'label_color' => 'success',
         // ],
         [
+            'text'        => 'Dashboard',
+            'url'         => 'admin/home',
+            'icon'        => 'fas fa-archway',
+            'can'         => ['isUser', 'isAdmin']
+        ],
+        [
+            'text'        => 'User',
+            'url'         => 'admin/users',
+            'icon'        => 'far fa-address-card',
+            'can'         => 'isAdmin',
+        ],
+        [
             'text'        => 'Pengelolaan Barang',
             'url'         => 'admin/books',
             'icon'        => 'fas fa-shoe-prints',
@@ -259,73 +271,27 @@ return [
             'icon'        => 'fas fa-award',
             'can'         => 'isAdmin',
         ],
-        ['header' => 'account_settings'],
+
         [
-            'text' => 'profile',
-            'url'  => 'profile',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'profile',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Laporan',
+            'icon'    => 'fas fa-receipt',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Laporan Barang Masuk',
+                    'icon'    => 'fas fa-wallet',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'level_one',
+                    'text'    => 'Laporan Barang Keluar',
+                    'icon'    => 'fas fa-wallet',
                     'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+
                 ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
+
             ],
         ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
-    ],
 
+    ],
     /*
     |--------------------------------------------------------------------------
     | Menu Filters
