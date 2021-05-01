@@ -36,7 +36,7 @@
     </a>
 </div> -->
 <!-- Container for the image gallery -->
-<div class="container">
+<div class="container-fluid">
 
     <!-- Full-width images with number text -->
     <div class="mySlides">
@@ -46,27 +46,27 @@
 
     <div class="mySlides">
         <div class="numbertext">2 / 6</div>
-        <img src="{{ '../vendor/adminlte/dist/img/adidas1.jpg' }}" style="width:100%">
+        <img src="{{ '../vendor/adminlte/dist/img/adidas3.jpg' }}" style="width:100%">
     </div>
 
     <div class="mySlides">
         <div class="numbertext">3 / 6</div>
-        <img src="{{ '../vendor/adminlte/dist/img/adidas1.jpg' }}" style="width:100%">
+        <img src="{{ '../vendor/adminlte/dist/img/puma1.jpg' }}" style="width:100%">
     </div>
 
     <div class="mySlides">
         <div class="numbertext">4 / 6</div>
-        <img src="{{ '../vendor/adminlte/dist/img/adidas2.jpg' }}" style="width:100%">
+        <img src="{{ '../vendor/adminlte/dist/img/puma2.jpg' }}" style="width:100%">
     </div>
 
     <div class="mySlides">
         <div class="numbertext">5 / 6</div>
-        <img src="i{{ '../vendor/adminlte/dist/img/adidas3.jpg' }}" style="width:100%">
+        <img src="{{ '../vendor/adminlte/dist/img/puma3.jpg' }}" style="width:100%">
     </div>
 
     <div class="mySlides">
         <div class="numbertext">6 / 6</div>
-        <img src="{{ '../vendor/adminlte/dist/img/adidas1.jpg' }}" style="width:100%">
+        <img src="{{ '../vendor/adminlte/dist/img/vans4.jpeg' }}" style="width:100%">
     </div>
 
     <!-- Next and previous buttons -->
@@ -81,22 +81,22 @@
     <!-- Thumbnail images -->
     <div class="row">
         <div class="column">
-            <img class="demo cursor" src="img_woods.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+            <img class="demo cursor" src="{{ '../vendor/adminlte/dist/img/pumaK1.jpg' }}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
         </div>
         <div class="column">
-            <img class="demo cursor" src="img_5terre.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+            <img class="demo cursor" src="{{ '../vendor/adminlte/dist/img/vansK1.jpeg' }}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
         </div>
         <div class="column">
-            <img class="demo cursor" src="img_mountains.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+            <img class="demo cursor" src="{{ '../vendor/adminlte/dist/img/vansK2.jpg' }}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
         </div>
         <div class="column">
-            <img class="demo cursor" src="img_lights.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+            <img class="demo cursor" src="{{ '../vendor/adminlte/dist/img/nikeK1.jpg' }}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
         </div>
         <div class="column">
-            <img class="demo cursor" src="img_nature.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+            <img class="demo cursor" src="{{ '../vendor/adminlte/dist/img/nikeK2.jpg' }}" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
         </div>
         <div class="column">
-            <img class="demo cursor" src="img_snow.jpg" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+            <img class="demo cursor" src="{{ '../vendor/adminlte/dist/img/nikeK3.jpg' }}" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
         </div>
     </div>
 </div>

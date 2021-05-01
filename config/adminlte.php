@@ -279,12 +279,12 @@ return [
                 [
                     'text' => 'Laporan Barang Masuk',
                     'icon'    => 'fas fa-wallet',
-                    'url'  => '#',
+                    'url'  => 'admin/masuk',
                 ],
                 [
                     'text'    => 'Laporan Barang Keluar',
                     'icon'    => 'fas fa-wallet',
-                    'url'     => '#',
+                    'url'     => 'admin/keluar',
 
                 ],
 

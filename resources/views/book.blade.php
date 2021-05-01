@@ -134,14 +134,14 @@
                                 <label for="edit-nama">Nama</label>
                                 <input type="text" class="form-control" name="nama" id="edit-nama" required />
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="edit-kategori">Kategori</label>
                                 <input type="text" class="form-control" name="kategori" id="edit-kategori" required />
                             </div>
                             <div class="form-group">
                                 <label for="edit-merek">Brand</label>
                                 <input type="text" class="form-control" name="merek" id="edit-merek" required />
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="edit-categories">Kategori Id</label>
                                 <input type="text" class="form-control" name="categories" id="edit-categories" required />
@@ -156,7 +156,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="edit-harga">Harga</label>
-                                <input type="number" class="form-control" name="harga" id="edit-harga" required />
+                                <input type="text" class="form-control" name="harga" id="edit-harga" required />
                             </div>
 
                         </div>
