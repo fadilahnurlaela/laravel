@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comes extends Model
 {
     use HasFactory;
+    public function comes()
+    {
+        return $this->belongsTo('App\Models\Book', 'nama', 'id');
+    }
 }

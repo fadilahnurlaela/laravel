@@ -85,11 +85,33 @@
                     </div>
                     <div class="form-group">
                         <label for="categories">Kategori Id</label>
-                        <input type="text" class="form-control" name="categories" id="categories" required />
+                        <div class="input-group">
+                            <select name="categories" id="categories" placeholder="Input Categories" aria-label="Example select with button addon">
+                                <option selected>Pilih....</option>
+                                @php
+                                $data=App\Models\Categories::get();
+                                @endphp
+                                @foreach($data as $key)
+                                <option value="{{$key->id}}">{{$key->nama}}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="brands">Brand Id</label>
-                        <input type="text" class="form-control" name="brands" id="brands" required />
+                        <div class="input-group">
+                            <select name="brands" id="brands" placeholder="Input Brands" aria-label="Example select with button addon">
+                                <option selected>Pilih....</option>
+                                @php
+                                $data=App\Models\Brands::get();
+                                @endphp
+                                @foreach($data as $key)
+                                <option value="{{$key->id}}">{{$key->brand}}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="stok">Jumlah</label>
@@ -144,11 +166,33 @@
                             </div> -->
                             <div class="form-group">
                                 <label for="edit-categories">Kategori Id</label>
-                                <input type="text" class="form-control" name="categories" id="edit-categories" required />
+                                <div class="input-group">
+                                    <select name="categories" id="edit-categories" placeholder="Input Categories" aria-label="Example select with button addon">
+                                        <option selected>Pilih....</option>
+                                        @php
+                                        $data=App\Models\Categories::get();
+                                        @endphp
+                                        @foreach($data as $key)
+                                        <option value="{{$key->id}}">{{$key->nama}}</option>
+                                        @endforeach
+                                    </select>
+
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-brands">Brand Id</label>
-                                <input type="text" class="form-control" name="brands" id="edit-brands" required />
+                                <div class="input-group">
+                                    <select name="brands" id="edit-brands" placeholder="Input Brands" aria-label="Example select with button addon">
+                                        <option selected>Pilih....</option>
+                                        @php
+                                        $data=App\Models\Brands::get();
+                                        @endphp
+                                        @foreach($data as $key)
+                                        <option value="{{$key->id}}">{{$key->brand}}</option>
+                                        @endforeach
+                                    </select>
+
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="edit-stok">Jumlah</label>

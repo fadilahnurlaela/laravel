@@ -75,14 +75,11 @@
                     </div>
                     <div class="form-group">
                         <label for="tanggal">Tanggal</label>
-                        <input type="text" class="form-control" name="tanggal" id="tanggal" required />
+                        <input type="text" id="date" class="date form-control" name="tanggal" id="tanggal" required />
                     </div>
                     <div class="form-group">
                         <label for="jumlah">Jumlah</label>
                         <input type="text" class="form-control" placeholder="Masukan jumlah" name="jumlah" id="jumlah" required />
-                    </div>
-                    <div class="form-group">
-                        <p style="font-style: italic;">*Note: Penulisan tanggal itu mulai dari tahun misal 20210304 akan muncul output 2021-03-04</p>
                     </div>
             </div>
             <div class="modal-footer">
@@ -117,7 +114,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="edit-tanggal">Tanggal</label>
-                                <input type="text" class="form-control" name="tanggal" id="edit-tanggal" required />
+                                <input type="text" id="date" class="date form-control" name="tanggal" id="edit-tanggal" required />
                             </div>
                             <div class="form-group">
                                 <label for="edit-jumlah">Jumlah</label>
@@ -180,7 +177,13 @@
 @section('js')
 <script>
     $(function() {
-
+        $("#date").datepicker({
+            format: 'yyyy-mm-dd', // Notice the Extra space at the beginning
+            autoclose: true,
+            todayHighlight: true,
+            // viewMode: "date",
+            // minViewMode: "date"
+        });
         $(document).on('click', '#btn-edit-closes', function() {
             let id = $(this).data('id');
             let nama = $(this).data('nama');
